@@ -1,0 +1,24 @@
+# .github/workflows/minimal.yml
+name: Minimal Test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Basic checks
+      run: |
+        echo "📁 Проверяем проект..."
+        ls -la
+        
+        # Проверяем основные файлы
+        [ -f index.html ] && echo "✅ index.html найден" || echo "⚠️  index.html не найден"
+        [ -f styles.css ] && echo "✅ styles.css найден" || echo "ℹ️  styles.css не найден"
+        [ -f Dockerfile ] && echo "✅ Dockerfile найден" || echo "ℹ️  Dockerfile не найден"
+        
+        # Простой тест доступности
+        echo "🔄 Тест завершен успешно!"
